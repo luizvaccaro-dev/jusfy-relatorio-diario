@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jusfy · Relatório Diário de Aquisição</title>
+<style>
+  :root{
+    --green:#02A378; --green-dark:#017858; --green-darker:#01563F; --green-light:#41C78F;
+    --google:#0182ab; --meta:#ed723e; --bing:#9551FB;
+    --neg:#e05a69; --warn:#B38B00;
+    --bg:#F3F4F1; --ink:#151915; --ink-soft:#5E5E60;
+    --border:#E2E4DE; --border-strong:#CBCEC7; --track:#ECEEE9;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:14.5px; line-height:1.5;
+  }
+  .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-variant-numeric:tabular-nums;}
+  a{color:inherit;}
+
+  /* ---- header ---- */
+  header{
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0) 0 0/22px 22px,
+      linear-gradient(120deg,var(--ink) 0%,var(--green-darker) 62%,var(--green-dark) 100%);
+    color:#fff; padding:26px 24px;
+  }
+  .header-inner{max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  .brand{display:flex; align-items:baseline; gap:12px;}
+  .brand .word{font-size:19px; font-weight:800; letter-spacing:-.2px;}
+  .brand .sub{font-size:13px; color:rgba(255,255,255,.75); font-weight:500;}
+  .pills{display:flex; gap:8px; flex-wrap:wrap;}
+  .pill{
+    font-size:12px; font-weight:600; padding:5px 11px; border-radius:100px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18);
+  }
+  .pill.acc{background:var(--green-light); color:var(--green-darker); border-color:transparent;}
+
+  /* ---- shell / grid ---- */
+  .shell{max-width:1180px; margin:0 auto; padding:26px 24px 60px; display:grid; grid-template-columns:1fr 320px; gap:20px; align-items:start;}
+  main{display:flex; flex-direction:column; gap:20px; min-width:0;}
+  aside{display:flex; flex-direction:column; gap:16px; position:sticky; top:20px;}
+
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:20px 20px 18px;
+  }
+  .card h3{
+    margin:0 0 4px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--ink-soft);
+  }
+  .card .h-note{font-size:12px; color:var(--ink-soft); margin:0 0 16px;}
+
+  /* ---- KPI row ---- */
+  .kpi-row{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  .kpi{
+    background:var(--card); border:1px solid var(--border); border-radius:12px; padding:0;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .kpi .bar{height:4px; width:100%;}
+  .kpi .bar.tu{background:var(--green);}
+  .kpi .bar.td{background:var(--neg);}
+  .kpi .bar.ta{background:var(--warn);}
+  .kpi .body{padding:14px 14px 13px;}
+  .kpi .label{font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.4px; margin-bottom:7px;}
+  .kpi .value{font-size:22px; font-weight:800; letter-spacing:-.3px;}
+  .kpi .delta{font-size:12px; margin-top:6px; font-weight:700; display:flex; align-items:center; gap:4px;}
+  .kpi .delta.tu{color:var(--green-dark);}
+  .kpi .delta.td{color:var(--neg);}
+  .kpi .delta.ta{color:var(--warn);}
+
+  /* ---- trend chart ---- */
+  .trend{display:flex; align-items:flex-end; gap:12px; height:132px; padding:4px 2px 0;}
+  .trend .col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px;}
+  .trend .bar{width:100%; max-width:38px; border-radius:5px 5px 2px 2px;}
+  .trend .n{font-size:12px; font-weight:700;}
+  .trend .d{font-size:10.5px; color:var(--ink-soft); text-align:center; line-height:1.3;}
+  .trend .d b{color:var(--ink); font-weight:700;}
+
+  /* ---- channel: donut + legend ---- */
+  .channel-flex{display:flex; gap:26px; align-items:center; flex-wrap:wrap;}
+  .donut{
+    width:132px; height:132px; border-radius:50%; flex:none;
+    background:conic-gradient(var(--google) 0% 61.4%, var(--green) 61.4% 90.7%, var(--meta) 90.7% 96.4%, var(--bing) 96.4% 99.1%, var(--green-light) 99.1% 100%);
+    position:relative;
+  }
+  .donut::after{
+    content:""; position:absolute; inset:20px; border-radius:50%; background:var(--card);
+  }
+  .donut-label{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .donut-label .n{font-size:19px; font-weight:800;}
+  .donut-label .t{font-size:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.3px;}
+  .legend{flex:1; min-width:220px; display:flex; flex-direction:column; gap:9px;}
+  .legend-row{display:flex; align-items:center; gap:9px; font-size:13px;}
+  .legend-row .sw{width:10px; height:10px; border-radius:3px; flex:none;}
+  .legend-row .lname{flex:1; color:var(--ink-soft);}
+  .legend-row .lval{font-weight:700;}
+  .legend-row .lpct{width:44px; text-align:right; color:var(--ink-soft);}
+
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th{
+    text-align:right; font-size:10.5px; text-transform:uppercase; letter-spacing:.4px; color:var(--ink-soft);
+    font-weight:700; padding:7px 6px; border-bottom:1.5px solid var(--border-strong);
+  }
+  th:first-child, td:first-child{text-align:left;}
+  td{padding:9px 6px; border-bottom:1px solid var(--border); text-align:right;}
+  tr:last-child td{border-bottom:none;}
+  .swatch{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px;}
+  td.name-cell{display:flex; align-items:center; font-weight:600;}
+  .dim{color:var(--ink-soft);}
+  .tbl-wrap{overflow-x:auto;}
+  .up{color:var(--green-dark); font-weight:700;}
+  .down{color:var(--neg); font-weight:700;}
+  .camp-name{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-size:11.5px;}
+
+  /* ---- sidebar callouts ---- */
+  .callout{
+    border-left:3px solid var(--border-strong); background:var(--track); border-radius:0 10px 10px 0;
+    padding:12px 13px; font-size:13px; line-height:1.5;
+  }
+  .callout + .callout{margin-top:10px;}
+  .callout.good{border-color:var(--green);}
+  .callout.warn{border-color:var(--neg);}
+  .callout .tag{font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; display:block; margin-bottom:4px;}
+  .callout.good .tag{color:var(--green-dark);}
+  .callout.warn .tag{color:var(--neg);}
+  .callout b{font-weight:700;}
+
+  footer.meta{font-size:11.5px; color:var(--ink-soft); line-height:1.7;}
+  footer.meta .camp-name{font-size:11px;}
+
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;}
+    aside{position:static;}
+    .kpi-row{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <span class="word">JUSFY</span>
+      <span class="sub">Relatório Diário de Aquisição</span>
+    </div>
+    <div class="pills">
+      <span class="pill">Terça-feira, 21/07</span>
+      <span class="pill acc">Dados de ontem · 20/07</span>
+      <span class="pill">DoD vs. domingo 19/07</span>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <main>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="bar ta"></div>
+        <div class="body">
+          <div class="label">Investimento</div>
+          <div class="value mono">R$ 84.124</div>
+          <div class="delta ta">▲ 283,2%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="bar tu"></div>
+        <div class="body">
+          <div class="label">Cadastros</div>
+          <div class="value mono">334</div>
+          <div class="delta tu">▲ 283,9%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="bar tu"></div>
+        <div class="body">
+          <div class="label">CAC</div>
+          <div class="value mono">R$ 251,87</div>
+          <div class="delta tu">▼ 0,2%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="bar tu"></div>
+        <div class="body">
+          <div class="label">Sessões</div>
+          <div class="value mono">69.765</div>
+          <div class="delta tu">▲ 341,5%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="bar td"></div>
+        <div class="body">
+          <div class="label">Conversão</div>
+          <div class="value mono">0,479%</div>
+          <div class="delta td">▼ 13,0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Cadastros · últimos 7 dias</h3>
+      <p class="h-note">Fins de semana em cinza · dia coberto pelo relatório em destaque</p>
+      <div class="trend">
+        <div class="col"><div class="n mono">396</div><div class="bar" style="height:96.6%;background:var(--border-strong);"></div><div class="d">14/07<br>ter</div></div>
+        <div class="col"><div class="n mono">410</div><div class="bar" style="height:100%;background:var(--border-strong);"></div><div class="d">15/07<br>qua</div></div>
+        <div class="col"><div class="n mono">341</div><div class="bar" style="height:83.2%;background:var(--border-strong);"></div><div class="d">16/07<br>qui</div></div>
+        <div class="col"><div class="n mono">253</div><div class="bar" style="height:61.7%;background:var(--border-strong);"></div><div class="d">17/07<br>sex</div></div>
+        <div class="col"><div class="n mono">111</div><div class="bar" style="height:27.1%;background:#DADCD5;"></div><div class="d">18/07<br>sáb</div></div>
+        <div class="col"><div class="n mono">87</div><div class="bar" style="height:21.2%;background:#DADCD5;"></div><div class="d">19/07<br>dom</div></div>
+        <div class="col"><div class="n mono">334</div><div class="bar" style="height:81.5%;background:var(--google);"></div><div class="d"><b>20/07</b><br>seg</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Cadastros por canal</h3>
+      <p class="h-note">Distribuição do dia 20/07</p>
+      <div class="channel-flex">
+        <div class="donut"></div>
+        <div class="legend">
+          <div class="legend-row"><span class="sw" style="background:var(--google);"></span><span class="lname">Google</span><span class="lval mono">205</span><span class="lpct mono">61,4%</span></div>
+          <div class="legend-row"><span class="sw" style="background:var(--green);"></span><span class="lname">Orgânico</span><span class="lval mono">98</span><span class="lpct mono">29,3%</span></div>
+          <div class="legend-row"><span class="sw" style="background:var(--meta);"></span><span class="lname">Meta</span><span class="lval mono">19</span><span class="lpct mono">5,7%</span></div>
+          <div class="legend-row"><span class="sw" style="background:var(--bing);"></span><span class="lname">Bing</span><span class="lval mono">9</span><span class="lpct mono">2,7%</span></div>
+          <div class="legend-row"><span class="sw" style="background:var(--green-light);"></span><span class="lname">Afiliados</span><span class="lval mono">3</span><span class="lpct mono">0,9%</span></div>
+        </div>
+      </div>
+      <div class="tbl-wrap" style="margin-top:18px;">
+        <table>
+          <thead><tr><th>Canal</th><th>Cadastros</th><th>Gasto</th><th>CAC</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell"><span class="swatch" style="background:var(--google);"></span>Google</td><td class="mono">205</td><td class="mono">R$ 55.793,21</td><td class="mono">R$ 272,16</td></tr>
+            <tr><td class="name-cell"><span class="swatch" style="background:var(--green);"></span>Orgânico</td><td class="mono">98</td><td class="mono dim">—</td><td class="mono dim">—</td></tr>
+            <tr><td class="name-cell"><span class="swatch" style="background:var(--meta);"></span>Meta</td><td class="mono">19</td><td class="mono">R$ 24.806,20</td><td class="mono">R$ 1.305,59</td></tr>
+            <tr><td class="name-cell"><span class="swatch" style="background:var(--bing);"></span>Bing</td><td class="mono">9</td><td class="mono">R$ 3.524,81</td><td class="mono">R$ 391,65</td></tr>
+            <tr><td class="name-cell"><span class="swatch" style="background:var(--green-light);"></span>Afiliados</td><td class="mono">3</td><td class="mono dim">—</td><td class="mono dim">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Cadastros por categoria</h3>
+      <p class="h-note">Δ sempre vs. mesmo dia da semana anterior (13/07) — WoW</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Categoria</th><th>Cadastros</th><th>% do total</th><th>Δ WoW</th></tr></thead>
+          <tbody>
+            <tr><td>Non brand</td><td class="mono">145</td><td class="mono">43,4%</td><td class="mono down">▼ 21,2%</td></tr>
+            <tr><td>Orgânico</td><td class="mono">98</td><td class="mono">29,3%</td><td class="mono down">▼ 33,3%</td></tr>
+            <tr><td>Brand Search</td><td class="mono">87</td><td class="mono">26,0%</td><td class="mono down">▼ 4,4%</td></tr>
+            <tr><td>Afiliados/Social</td><td class="mono">4</td><td class="mono">1,2%</td><td class="mono up">▲ 100,0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Top campanhas</h3>
+      <p class="h-note">Cadastros reais do dia · "Pmax" e "DSA" já mesclados com as variantes de UTM</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Campanha</th><th>Cadastros</th><th>Gasto</th><th>CAC</th></tr></thead>
+          <tbody>
+            <tr><td class="camp-name">google_brandsearch_..._institucional</td><td class="mono">84</td><td class="mono">R$ 1.378,47</td><td class="mono">R$ 16,41</td></tr>
+            <tr><td class="camp-name">JusFinder</td><td class="mono">38</td><td class="mono dim">—</td><td class="mono dim">—</td></tr>
+            <tr><td class="camp-name">Pmax</td><td class="mono">27</td><td class="mono">R$ 9.737,85</td><td class="mono">R$ 360,66</td></tr>
+            <tr><td class="camp-name">google_nonbrand_..._jusprocessos</td><td class="mono">11</td><td class="mono">R$ 2.890,26</td><td class="mono">R$ 262,75</td></tr>
+            <tr><td class="camp-name">google_nonbrand_..._jusrevisional</td><td class="mono">8</td><td class="mono">R$ 1.890,26</td><td class="mono">R$ 236,28</td></tr>
+            <tr><td class="camp-name">google_nonbrand_..._juscalc</td><td class="mono">7</td><td class="mono">R$ 1.892,05</td><td class="mono">R$ 270,29</td></tr>
+            <tr><td class="camp-name">DSA</td><td class="mono">7</td><td class="mono">R$ 5.677,41</td><td class="mono down">R$ 811,06</td></tr>
+            <tr><td class="camp-name">..._jusprocessos_nova_lp</td><td class="mono">6</td><td class="mono dim">—</td><td class="mono dim">—</td></tr>
+            <tr><td class="camp-name">google_nonbrand_..._jusgpt</td><td class="mono">5</td><td class="mono">R$ 4.754,09</td><td class="mono down">R$ 950,82</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <aside>
+    <div class="card">
+      <h3>Destaques do dia</h3>
+      <div style="margin-top:14px;">
+        <div class="callout good">
+          <span class="tag">Ponto positivo</span>
+          <b>Institucional foi de longe o canal mais barato:</b> 84 cadastros a CAC de R$ 16,41, puxando a média geral pra baixo.
+        </div>
+        <div class="callout warn">
+          <span class="tag">Atenção</span>
+          <b>Orgânico caiu 33% na semana</b> (98 vs. 147 na segunda-feira anterior) — maior queda entre as categorias.
+        </div>
+        <div class="callout warn">
+          <span class="tag">Atenção</span>
+          <b>CAC acima da média (R$ 252):</b> Meta a R$ 1.305,59, JusGPT a R$ 950,82 e DSA a R$ 811,06 — vale revisar orçamento/segmentação.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <footer class="meta">
+        Fonte: Supabase (GA4, campanhas de mídia paga e cadastros reais via Metabase).<br><br>
+        Dados de ontem podem sofrer pequeno ajuste no próximo import do Metabase.<br><br>
+        Nomes de campanha "Pmax" e "DSA" mesclados com suas variantes de UTM (<span class="camp-name">google_nonbrand_vendas_pmax</span> / <span class="camp-name">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real.
+      </footer>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>

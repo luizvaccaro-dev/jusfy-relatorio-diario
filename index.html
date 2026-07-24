@@ -102,10 +102,10 @@
   .camp-platform{display:flex; align-items:center; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; color:var(--text-secondary); margin-bottom:6px;}
   .camp-platform .swatch{margin-right:7px;}
   .camp-name{font-size:13.5px; font-weight:600; margin-bottom:14px; word-break:break-word;}
-  .camp-stats{display:flex; gap:20px;}
-  .camp-stats > div{display:flex; flex-direction:column; gap:2px;}
-  .camp-label{font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.3px;}
-  .camp-val{font-size:16px; font-weight:700;}
+  .camp-stats{display:flex; gap:14px;}
+  .camp-stats > div{display:flex; flex-direction:column; gap:2px; min-width:0;}
+  .camp-label{font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.3px; white-space:nowrap;}
+  .camp-val{font-size:15px; font-weight:700; white-space:nowrap;}
 
   @media (max-width:640px){
     .kpi-grid{grid-template-columns:repeat(2,1fr);}
@@ -304,33 +304,33 @@
 
   <section>
     <h2>Melhores campanhas (non-brand)</h2>
-    <div class="section-note">Dados de ontem (23/07) · menor custo por conversão entre as campanhas non-brand de cada plataforma. Meta não tem campanha de marca (busca) como Google/Bing — o universo comparável ali são as campanhas de vendas de fundo de funil ("meta_vendas_fundo*"), excluindo branding/tráfego/teste sem gasto.</div>
+    <div class="section-note">Dados de ontem (23/07) · maior volume de cadastros reais entre as campanhas non-brand de cada plataforma. Meta não tem campanha de marca (busca) como Google/Bing — o universo comparável ali são as campanhas de vendas de fundo de funil ("meta_vendas_fundo*"), excluindo branding/tráfego/teste sem gasto. Nomes de UTM que divergem do nome da campanha de mídia (ex: "JusFinder") são casados por palavra-chave, igual à mesclagem Pmax/DSA.</div>
     <div class="camp-grid">
       <div class="camp-card">
         <div class="camp-platform"><span class="swatch" style="background:var(--google);"></span>Google Ads</div>
-        <div class="camp-name mono">google_nonbrand_vendas_search_juscalc</div>
+        <div class="camp-name mono">google_nonbrand_vendas_search_jusfinder</div>
         <div class="camp-stats">
-          <div><span class="camp-label">Conversões</span><span class="camp-val mono">7</span></div>
-          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 1.776,70</span></div>
-          <div><span class="camp-label">CPA</span><span class="camp-val mono">R$ 253,81</span></div>
+          <div><span class="camp-label">Cadastros</span><span class="camp-val mono">36</span></div>
+          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 15.127,26</span></div>
+          <div><span class="camp-label">CAC</span><span class="camp-val mono">R$ 420,20</span></div>
         </div>
       </div>
       <div class="camp-card">
         <div class="camp-platform"><span class="swatch" style="background:var(--meta);"></span>Meta Ads</div>
-        <div class="camp-name mono">meta_vendas_fundo_teste_criativos</div>
+        <div class="camp-name mono">meta_vendas_fundo_oab_sp</div>
         <div class="camp-stats">
-          <div><span class="camp-label">Conversões</span><span class="camp-val mono">26</span></div>
-          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 846,83</span></div>
-          <div><span class="camp-label">CPA</span><span class="camp-val mono">R$ 32,57</span></div>
+          <div><span class="camp-label">Cadastros</span><span class="camp-val mono">12</span></div>
+          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 9.841,44</span></div>
+          <div><span class="camp-label">CAC</span><span class="camp-val mono">R$ 820,12</span></div>
         </div>
       </div>
       <div class="camp-card">
         <div class="camp-platform"><span class="swatch" style="background:var(--bing);"></span>Bing Ads</div>
-        <div class="camp-name mono">bing_nonbrand_vendas_search_juscalc</div>
+        <div class="camp-name mono">bing_nonbrand_vendas_search_jusgpt</div>
         <div class="camp-stats">
-          <div><span class="camp-label">Conversões</span><span class="camp-val mono">2</span></div>
-          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 256,86</span></div>
-          <div><span class="camp-label">CPA</span><span class="camp-val mono">R$ 128,43</span></div>
+          <div><span class="camp-label">Cadastros</span><span class="camp-val mono">6</span></div>
+          <div><span class="camp-label">Gasto</span><span class="camp-val mono">R$ 1.620,49</span></div>
+          <div><span class="camp-label">CAC</span><span class="camp-val mono">R$ 270,08</span></div>
         </div>
       </div>
     </div>
@@ -340,7 +340,7 @@
     Fonte: Supabase (GA4, campanhas de mídia paga e cadastros reais via Metabase). Dados de ontem podem sofrer pequeno ajuste no próximo import do Metabase.<br>
     Comparações agora usam a média das últimas 4 ocorrências do mesmo dia da semana (em vez de dia anterior/semana anterior), pra suavizar oscilações pontuais.<br>
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
-    Na seção "Melhores campanhas", Conversões e CPA são os valores reportados pela própria plataforma (Google Ads / Meta Ads / Bing Ads) por campanha — diferente dos cadastros reais (Metabase) usados no restante do relatório, já que essa granularidade não existe por campanha individual.<br>
+    Na seção "Melhores campanhas", Cadastros e CAC agora são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder" vs a campanha "google_nonbrand_vendas_search_jusfinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>
     Na "Previsão até o fim do mês": ambos os números são cadastros reais (Metabase), mesma métrica do resto do relatório — o segundo card mostra só a fatia que falta projetar pros dias restantes (total do mês projetado menos o já realizado até ontem). São projeções, não valores realizados.
   </footer>
 

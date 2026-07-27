@@ -7,7 +7,7 @@
 <style>
   :root{
     --green:#02A378; --green-dark:#017858; --green-darker:#01563F; --green-light:#41C78F;
-    --google:#0182ab; --google-brand:#045c74; --meta:#ed723e; --bing:#9551FB;
+    --google:#0182ab; --google-brand:#045c74; --meta:#ed723e; --bing:#9551FB; --mx:#534AB7;
     --neg:#e05a69; --warn:#B38B00;
     --bg:#FAFAFA; --text:#212121; --text-secondary:#5E5E60;
     --border:#E7E8EC; --border-strong:#CECED2; --track:#F4F5F9;
@@ -336,8 +336,53 @@
     </div>
   </section>
 
+  <section>
+    <h2>Funil Jusfy México (JusGPT)</h2>
+    <div class="section-note">Acumulado desde 14/07 (início do investimento em mídia paga no México) até ontem. Sem quebra por campanha ainda — a base do JusGPT México não tem UTM/campanha associada ao cadastro, só o total diário.</div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr); max-width:480px;">
+      <div class="kpi">
+        <div class="label">Investimento (Google Ads MX)</div>
+        <div class="value mono">R$ 3.586,67</div>
+        <div class="delta ta">14/07 → ontem</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Conversão cadastro → pago</div>
+        <div class="value mono">17,1%</div>
+        <div class="delta ta">27 de 158 cadastros</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="chbar-row">
+        <div class="name">Cadastros</div>
+        <div class="chbar-track"><div class="chbar-fill" style="width:100%;background:var(--mx);"></div></div>
+        <div class="val mono">158</div>
+      </div>
+      <div class="chbar-row">
+        <div class="name">Pending checkout</div>
+        <div class="chbar-track"><div class="chbar-fill" style="width:79.1%;background:var(--mx);"></div></div>
+        <div class="val mono">125</div>
+      </div>
+      <div class="chbar-row">
+        <div class="name">Pago</div>
+        <div class="chbar-track"><div class="chbar-fill" style="width:17.1%;background:var(--mx);"></div></div>
+        <div class="val mono">27</div>
+      </div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>Etapa</th><th>Total</th><th>CAC</th></tr></thead>
+        <tbody>
+          <tr><td>Cadastros</td><td class="mono">158</td><td class="mono">R$ 22,70</td></tr>
+          <tr><td>Pending checkout</td><td class="mono">125</td><td class="mono">R$ 28,69</td></tr>
+          <tr><td>Pago</td><td class="mono">27</td><td class="mono">R$ 132,84</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <footer>
     Fonte: Supabase (GA4, campanhas de mídia paga e cadastros reais via Metabase). Dados do final de semana podem sofrer pequeno ajuste no próximo import do Metabase.<br>
+    Funil Jusfy México: gasto de <span class="mono">mx_campaign_daily</span> (Google Ads MX) e cadastros/pending checkout/pago de <span class="mono">mx_conversions_daily</span>, ambos desde 14/07/2026. CAC de cada etapa = investimento total ÷ total daquela etapa. Ainda sem quebra por campanha (falta UTM na base do JusGPT México).<br>
     Comparações agora usam a média das últimas 4 ocorrências do mesmo dia/período da semana (em vez de dia anterior/semana anterior), pra suavizar oscilações pontuais.<br>
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
     Na seção "Melhores campanhas", Cadastros e CAC agora são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder" vs a campanha "google_nonbrand_vendas_search_jusfinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>

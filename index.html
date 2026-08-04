@@ -161,14 +161,14 @@
 
   <section>
     <h2>Números do mês</h2>
-    <div class="section-note">Agosto, acumulado até ontem (01/08–03/08) · comparado ao mesmo período de julho (01/07–03/07). "vs esperado" ajusta pela mistura de dias úteis/fim de semana do intervalo (01–03/08 caiu sáb+dom+seg, bem diferente de 01–03/07).</div>
+    <div class="section-note">Agosto, acumulado até ontem (01/08–03/08) · comparado ao mesmo período de julho (01/07–03/07).<br>"vs ajustado" corrige o efeito calendário: agosto começou no fim de semana, julho não.</div>
     <div class="kpi-grid">
       <div class="kpi">
         <div class="label">Investimento</div>
         <div class="value mono">R$ 103.622</div>
         <div class="delta-group">
           <div class="delta ta">▼ 58,7% vs jul.</div>
-          <div class="delta secondary ta">▼ 13,8% vs esperado</div>
+          <div class="delta secondary ta">▼ 13,8% vs ajustado</div>
         </div>
       </div>
       <div class="kpi">
@@ -176,7 +176,7 @@
         <div class="value mono">510</div>
         <div class="delta-group">
           <div class="delta td">▼ 50,8% vs jul.</div>
-          <div class="delta secondary td">▼ 14,2% vs esperado</div>
+          <div class="delta secondary td">▼ 14,2% vs ajustado</div>
         </div>
       </div>
       <div class="kpi">
@@ -184,7 +184,7 @@
         <div class="value mono">R$ 203,18</div>
         <div class="delta-group">
           <div class="delta tu">▼ 16,0% vs jul.</div>
-          <div class="delta secondary td">▲ 0,5% vs esperado</div>
+          <div class="delta secondary td">▲ 0,5% vs ajustado</div>
         </div>
       </div>
       <div class="kpi">
@@ -192,7 +192,7 @@
         <div class="value mono">78.111</div>
         <div class="delta-group">
           <div class="delta td">▼ 57,9% vs jul.</div>
-          <div class="delta secondary td">▼ 11,1% vs esperado</div>
+          <div class="delta secondary td">▼ 11,1% vs ajustado</div>
         </div>
       </div>
       <div class="kpi">
@@ -200,7 +200,7 @@
         <div class="value mono">0,653%</div>
         <div class="delta-group">
           <div class="delta tu">▲ 16,8% vs jul.</div>
-          <div class="delta secondary td">▼ 3,5% vs esperado</div>
+          <div class="delta secondary td">▼ 3,5% vs ajustado</div>
         </div>
       </div>
     </div>
@@ -359,7 +359,7 @@
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
     Na seção "Melhores campanhas", Cadastros e CAC agora são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder" vs a campanha "google_nonbrand_vendas_search_jusfinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>
     Na "Previsão até o fim do mês": ambos os números são cadastros reais (Metabase), mesma métrica do resto do relatório — o segundo card mostra só a fatia que falta projetar pros dias restantes (total do mês projetado menos o já realizado até ontem). São projeções, não valores realizados.<br>
-    "Números do mês" agora traz dois comparativos: MoM (mês corrente vs mesmo período do mês anterior, cru) e "vs esperado" (mesmo intervalo, mas usando a média histórica por dia útil/fim de semana/feriado de cada data — isola o efeito de o mês ter mais ou menos dias úteis que o outro). Feriados nacionais e de SP entram como dia não-útil nesse cálculo e nas médias de 4 semanas/previsão do mês.
+    "Números do mês" agora traz dois comparativos: MoM (mês corrente vs mesmo período do mês anterior, cru) e "vs ajustado" (mesmo intervalo, mas usando a média histórica por dia útil/fim de semana/feriado de cada data — isola o efeito de o mês ter mais ou menos dias úteis que o outro). Feriados nacionais e de SP entram como dia não-útil nesse cálculo e nas médias de 4 semanas/previsão do mês.
   </footer>
 
 </div>

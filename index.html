@@ -46,10 +46,12 @@
   }
   .kpi .label{font-size:11.5px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.4px;}
   .kpi .value{font-size:21px; font-weight:700;}
-  .kpi .delta{font-size:12.5px; display:flex; align-items:center; gap:4px; font-weight:600;}
+  .kpi .delta{font-size:12.5px; display:flex; align-items:center; gap:4px; font-weight:600; white-space:nowrap;}
   .delta.tu{color:var(--green-dark);}
   .delta.td{color:var(--neg);}
   .delta.ta{color:var(--warn);}
+  .kpi .delta-group{display:flex; flex-direction:column; gap:3px;}
+  .kpi .delta.secondary{font-size:11px; font-weight:600; opacity:.68; padding-top:4px; border-top:1px dashed var(--border);}
 
   /* Callouts */
   .callouts{display:flex; flex-direction:column; gap:10px;}
@@ -164,32 +166,42 @@
       <div class="kpi">
         <div class="label">Investimento</div>
         <div class="value mono">R$ 103.622</div>
-        <div class="delta ta">▼ 58,7% vs mesmo período jul.</div>
-        <div class="delta ta">▼ 13,8% vs esperado (mix dia útil/fds)</div>
+        <div class="delta-group">
+          <div class="delta ta">▼ 58,7% vs jul.</div>
+          <div class="delta secondary ta">▼ 13,8% vs esperado</div>
+        </div>
       </div>
       <div class="kpi">
         <div class="label">Cadastros</div>
         <div class="value mono">510</div>
-        <div class="delta td">▼ 50,8% vs mesmo período jul.</div>
-        <div class="delta td">▼ 14,2% vs esperado (mix dia útil/fds)</div>
+        <div class="delta-group">
+          <div class="delta td">▼ 50,8% vs jul.</div>
+          <div class="delta secondary td">▼ 14,2% vs esperado</div>
+        </div>
       </div>
       <div class="kpi">
         <div class="label">CAC</div>
         <div class="value mono">R$ 203,18</div>
-        <div class="delta tu">▼ 16,0% vs mesmo período jul.</div>
-        <div class="delta td">▲ 0,5% vs esperado (mix dia útil/fds)</div>
+        <div class="delta-group">
+          <div class="delta tu">▼ 16,0% vs jul.</div>
+          <div class="delta secondary td">▲ 0,5% vs esperado</div>
+        </div>
       </div>
       <div class="kpi">
         <div class="label">Sessões (site)</div>
         <div class="value mono">78.111</div>
-        <div class="delta td">▼ 57,9% vs mesmo período jul.</div>
-        <div class="delta td">▼ 11,1% vs esperado (mix dia útil/fds)</div>
+        <div class="delta-group">
+          <div class="delta td">▼ 57,9% vs jul.</div>
+          <div class="delta secondary td">▼ 11,1% vs esperado</div>
+        </div>
       </div>
       <div class="kpi">
         <div class="label">Conversão</div>
         <div class="value mono">0,653%</div>
-        <div class="delta tu">▲ 16,8% vs mesmo período jul.</div>
-        <div class="delta td">▼ 3,5% vs esperado (mix dia útil/fds)</div>
+        <div class="delta-group">
+          <div class="delta tu">▲ 16,8% vs jul.</div>
+          <div class="delta secondary td">▼ 3,5% vs esperado</div>
+        </div>
       </div>
     </div>
   </section>

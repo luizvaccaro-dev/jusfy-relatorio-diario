@@ -221,6 +221,52 @@
         <div class="delta ta">17–31/08 · 15 dias</div>
       </div>
     </div>
+
+    <div class="section-note" style="margin-top:20px;">Previsão por canal (17–31/08), mesma metodologia — média das últimas 4 ocorrências de cada dia da semana, agora calculada canal a canal. Soma dos 6 canais bate com os 2 números acima.</div>
+    <div class="chbar-row">
+      <div class="name">Google Non-brand</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:100%;background:var(--google);"></div></div>
+      <div class="val mono">3.246</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Orgânico</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:80.7%;background:var(--green);"></div></div>
+      <div class="val mono">2.619</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Google Brand</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:50.6%;background:var(--google-brand);"></div></div>
+      <div class="val mono">1.641</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Meta</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:12.3%;background:var(--meta);"></div></div>
+      <div class="val mono">398</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Bing</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:9.1%;background:var(--bing);"></div></div>
+      <div class="val mono">296</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Afiliados</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:1.7%;background:var(--green-light);"></div></div>
+      <div class="val mono">56</div>
+    </div>
+
+    <div class="tbl-wrap" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>Canal</th><th>Realizado (MTD)</th><th>Previsão restante</th><th>Previsto (mês)</th><th>% do previsto</th></tr></thead>
+        <tbody>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--google);"></span>Google Non-brand</td><td class="mono">1.568</td><td class="mono">≈ 1.678</td><td class="mono">≈ 3.246</td><td class="mono">39,32%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--green);"></span>Orgânico</td><td class="mono">1.264</td><td class="mono">≈ 1.355</td><td class="mono">≈ 2.619</td><td class="mono">31,73%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--google-brand);"></span>Google Brand</td><td class="mono">797</td><td class="mono">≈ 844</td><td class="mono">≈ 1.641</td><td class="mono">19,88%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--meta);"></span>Meta</td><td class="mono">200</td><td class="mono">≈ 198</td><td class="mono">≈ 398</td><td class="mono">4,82%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--bing);"></span>Bing</td><td class="mono">133</td><td class="mono">≈ 163</td><td class="mono">≈ 296</td><td class="mono">3,58%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--green-light);"></span>Afiliados</td><td class="mono">29</td><td class="mono">≈ 27</td><td class="mono">≈ 56</td><td class="mono">0,68%</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section>
@@ -404,7 +450,7 @@
     Comparações usam a média das últimas 4 ocorrências do mesmo dia da semana (em vez de dia anterior/semana anterior), pra suavizar oscilações pontuais.<br>
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
     Na seção "Melhores campanhas", Cadastros e CAC são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>
-    Na "Previsão até o fim do mês": ambos os números são cadastros reais (Metabase), mesma métrica do resto do relatório — o segundo card mostra só a fatia que falta projetar pros dias restantes (total do mês projetado menos o já realizado até ontem). São projeções, não valores realizados.<br>
+    Na "Previsão até o fim do mês": os números (incluindo a quebra "Previsão por canal") são todos cadastros reais (Metabase), mesma métrica do resto do relatório e mesma metodologia (média das últimas 4 ocorrências do dia da semana) aplicada canal a canal — o segundo card mostra só a fatia que falta projetar pros dias restantes. São projeções, não valores realizados.<br>
     "Números do mês" traz dois comparativos: MoM (mês corrente vs mesmo período do mês anterior, cru) e "vs ajustado" (mesmo intervalo, mas usando a média histórica por dia útil/fim de semana/feriado de cada data — isola o efeito de o mês ter mais ou menos dias úteis/fins de semana que o outro). Feriados nacionais e de SP entram como dia não-útil nesse cálculo e nas médias de 4 semanas/previsão do mês.<br>
     Funil Jusfy México: fonte <span class="mono">mx_campaign_daily</span> + <span class="mono">mx_conversions_daily</span>, acumulado desde 14/07/2026. CAC de cada etapa = investimento total ÷ total daquela etapa; ainda sem quebra por campanha. O estágio "Trial (pendente)" corresponde à coluna <span class="mono">pending_checkout</span> da base (renomeado no relatório em 13/08/2026 após correção da fonte de dados).
   </footer>

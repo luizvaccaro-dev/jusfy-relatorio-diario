@@ -148,13 +148,13 @@
       </div>
       <div class="kpi">
         <div class="label">Sessões (site)</div>
-        <div class="value mono">50.355</div>
-        <div class="delta td">▼ 11,10% vs média 4sem.</div>
+        <div class="value mono">57.434</div>
+        <div class="delta tu">▲ 1,40% vs média 4sem.</div>
       </div>
       <div class="kpi">
         <div class="label">Conversão</div>
-        <div class="value mono">0,661%</div>
-        <div class="delta tu">▲ 4,69% vs média 4sem.</div>
+        <div class="value mono">0,580%</div>
+        <div class="delta td">▼ 8,22% vs média 4sem.</div>
       </div>
     </div>
   </section>
@@ -189,18 +189,18 @@
       </div>
       <div class="kpi">
         <div class="label">Sessões (site)</div>
-        <div class="value mono">623.858</div>
+        <div class="value mono">660.680</div>
         <div class="delta-group">
-          <div class="delta td">▼ 23,89% vs jul.</div>
-          <div class="delta secondary td">▼ 10,42% vs ajustado</div>
+          <div class="delta td">▼ 19,40% vs jul.</div>
+          <div class="delta secondary td">▼ 5,31% vs ajustado</div>
         </div>
       </div>
       <div class="kpi">
         <div class="label">Conversão</div>
-        <div class="value mono">0,693%</div>
+        <div class="value mono">0,655%</div>
         <div class="delta-group">
-          <div class="delta tu">▲ 16,22% vs jul.</div>
-          <div class="delta secondary tu">▲ 6,27% vs ajustado</div>
+          <div class="delta tu">▲ 9,76% vs jul.</div>
+          <div class="delta secondary tu">▲ 0,58% vs ajustado</div>
         </div>
       </div>
     </div>
@@ -274,11 +274,11 @@
     <div class="callouts">
       <div class="callout good">
         <div class="dot"></div>
-        <div><b>Conversão e CAC do dia melhoraram vs a média das últimas 4 segundas:</b> conversão em 0,661% (+4,69%) e CAC em R$ 222,67 (‑1,26%) — eficiência compensando a queda de investimento e tráfego do dia.</div>
+        <div><b>Correção do GA4:</b> sessões de ontem na verdade ficaram acima da média das últimas 4 segundas (57.434, +1,40%), não abaixo como um dado de sincronização incompleta havia indicado — tráfego do dia está normal.</div>
       </div>
       <div class="callout warn">
         <div class="dot"></div>
-        <div><b>Cadastros e sessões de ontem ficaram abaixo da média das últimas 4 segundas-feiras</b>: cadastros ‑6,40% (333 vs 355,75) e sessões ‑11,10% (50.355 vs 56.640) — volume de tráfego de segunda ainda não recuperou o patamar típico.</div>
+        <div><b>Com o tráfego normalizado, a queda de cadastros de ontem é uma queda real de conversão</b>: conversão em 0,580% (‑8,22% vs média das últimas 4 segundas) e cadastros em 333 (‑6,40%) — não um problema de volume de sessões.</div>
       </div>
       <div class="callout warn">
         <div class="dot"></div>
@@ -447,6 +447,7 @@
 
   <footer>
     Fonte: Supabase (GA4, campanhas de mídia paga e cadastros reais via Metabase). Dados do período coberto podem sofrer pequeno ajuste no próximo import do Metabase.<br>
+    <b>Correção 18/08/2026:</b> as sessões do GA4 de 07–17/08 estavam desatualizadas por atraso de sincronização; este relatório já usa os valores corrigidos. Investimento, cadastros, CAC e a previsão do mês não usam sessões e não foram afetados.<br>
     Comparações usam a média das últimas 4 ocorrências do mesmo dia da semana (em vez de dia anterior/semana anterior), pra suavizar oscilações pontuais.<br>
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
     Na seção "Melhores campanhas", Cadastros e CAC são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>

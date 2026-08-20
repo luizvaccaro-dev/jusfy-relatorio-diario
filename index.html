@@ -97,6 +97,7 @@
 
   /* forecast cards */
   .kpi-grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; max-width:480px;}
+  .kpi-grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
 
   /* best campaign cards */
   .camp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
@@ -114,6 +115,7 @@
     .chbar-row .name{width:92px;}
     .camp-grid{grid-template-columns:1fr;}
     .kpi-grid-2{grid-template-columns:1fr;}
+    .kpi-grid-4{grid-template-columns:repeat(2,1fr);}
   }
 </style>
 </head>
@@ -236,62 +238,79 @@
 
   <section>
     <h2>Previsão até o fim do mês</h2>
-    <div class="section-note">Projeção dos dias restantes de agosto (20–31/08) com base na média das últimas 4 ocorrências de cada dia da semana, cruzando investimento, sessões e conversão históricos — somada ao realizado até ontem (19/08).</div>
-    <div class="kpi-grid-2">
+    <div class="section-note">Realizado = cadastros reais até ontem (01–19/08). Previsto (mês) = realizado + projeção dos dias restantes (20–31/08, média das últimas 4 ocorrências de cada dia da semana). Meta do mês = meta de agosto do plano Q3 (10.000 cadastros, quebrado por canal). Verde/vermelho no % de alcance compara com o % do mês já decorrido (61,3%, 19 de 31 dias) — não com 100%, já que ainda restam 12 dias.</div>
+    <div class="kpi-grid-4">
       <div class="kpi">
-        <div class="label">Cadastros previstos (mês)</div>
-        <div class="value mono">≈ 8.106</div>
-        <div class="delta td">▼ 9,06% vs julho fechado</div>
+        <div class="label">Realizado</div>
+        <div class="value mono">5.005</div>
+        <div class="delta ta">01–19/08</div>
       </div>
       <div class="kpi">
-        <div class="label">Previsão dos dias restantes</div>
-        <div class="value mono">≈ 3.101</div>
-        <div class="delta ta">20–31/08 · 12 dias</div>
+        <div class="label">Previsto (mês)</div>
+        <div class="value mono">≈ 8.105</div>
+        <div class="delta td">▼ 9,07% vs julho fechado</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Meta do mês</div>
+        <div class="value mono">10.000</div>
+        <div class="delta ta">Plano Q3 · agosto</div>
+      </div>
+      <div class="kpi">
+        <div class="label">% do alcance da meta</div>
+        <div class="value mono">81,05%</div>
+        <div class="delta td">faltam ≈ 1.895</div>
       </div>
     </div>
 
-    <div class="section-note" style="margin-top:20px;">Previsão por canal (20–31/08), mesma metodologia — média das últimas 4 ocorrências de cada dia da semana, agora calculada canal a canal. Soma dos 6 canais bate com os 2 números acima.</div>
+    <div class="section-note" style="margin-top:20px;">Previsão por canal (20–31/08) vs meta de agosto por canal (plano Q3). Barra = % da meta atingido pelo previsto, limitada a 100% de largura.</div>
     <div class="chbar-row">
       <div class="name">Google Non-brand</div>
       <div class="chbar-track"><div class="chbar-fill" style="width:100%;background:var(--google);"></div></div>
-      <div class="val mono">3.182</div>
+      <div class="val mono">107,7%</div>
     </div>
     <div class="chbar-row">
       <div class="name">Orgânico</div>
-      <div class="chbar-track"><div class="chbar-fill" style="width:81.5%;background:var(--green);"></div></div>
-      <div class="val mono">2.592</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:91.0%;background:var(--green);"></div></div>
+      <div class="val mono">91,0%</div>
     </div>
     <div class="chbar-row">
       <div class="name">Google Brand</div>
-      <div class="chbar-track"><div class="chbar-fill" style="width:50.1%;background:var(--google-brand);"></div></div>
-      <div class="val mono">1.595</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:92.1%;background:var(--google-brand);"></div></div>
+      <div class="val mono">92,1%</div>
     </div>
     <div class="chbar-row">
       <div class="name">Meta</div>
-      <div class="chbar-track"><div class="chbar-fill" style="width:11.7%;background:var(--meta);"></div></div>
-      <div class="val mono">373</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:49.8%;background:var(--meta);"></div></div>
+      <div class="val mono">49,8%</div>
     </div>
     <div class="chbar-row">
       <div class="name">Bing</div>
-      <div class="chbar-track"><div class="chbar-fill" style="width:9.7%;background:var(--bing);"></div></div>
-      <div class="val mono">308</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:83.3%;background:var(--bing);"></div></div>
+      <div class="val mono">83,3%</div>
     </div>
     <div class="chbar-row">
       <div class="name">Afiliados</div>
-      <div class="chbar-track"><div class="chbar-fill" style="width:1.7%;background:var(--green-light);"></div></div>
-      <div class="val mono">55</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:13.9%;background:var(--green-light);"></div></div>
+      <div class="val mono">13,9%</div>
+    </div>
+    <div class="chbar-row">
+      <div class="name">Outros</div>
+      <div class="chbar-track"><div class="chbar-fill" style="width:0%;background:var(--border-strong);"></div></div>
+      <div class="val mono">0,0%</div>
     </div>
 
     <div class="tbl-wrap" style="margin-top:16px;">
       <table>
-        <thead><tr><th>Canal</th><th>Realizado (MTD)</th><th>Previsão restante</th><th>Previsto (mês)</th><th>% do previsto</th></tr></thead>
+        <thead><tr><th>Canal</th><th>Realizado</th><th>Previsto (mês)</th><th>Meta do mês</th><th>% do alcance</th></tr></thead>
         <tbody>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--google);"></span>Google Non-brand</td><td class="mono">1.972</td><td class="mono">≈ 1.210</td><td class="mono">≈ 3.182</td><td class="mono">39,26%</td></tr>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--green);"></span>Orgânico</td><td class="mono">1.587</td><td class="mono">≈ 1.005</td><td class="mono">≈ 2.592</td><td class="mono">31,98%</td></tr>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--google-brand);"></span>Google Brand</td><td class="mono">993</td><td class="mono">≈ 602</td><td class="mono">≈ 1.595</td><td class="mono">19,68%</td></tr>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--meta);"></span>Meta</td><td class="mono">233</td><td class="mono">≈ 140</td><td class="mono">≈ 373</td><td class="mono">4,60%</td></tr>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--bing);"></span>Bing</td><td class="mono">184</td><td class="mono">≈ 124</td><td class="mono">≈ 308</td><td class="mono">3,79%</td></tr>
-          <tr><td class="name-cell"><span class="swatch" style="background:var(--green-light);"></span>Afiliados</td><td class="mono">36</td><td class="mono">≈ 19</td><td class="mono">≈ 55</td><td class="mono">0,68%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--google);"></span>Google Non-brand</td><td class="mono">1.972</td><td class="mono">≈ 3.182</td><td class="mono">2.955</td><td class="mono up">107,69%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--green);"></span>Orgânico</td><td class="mono">1.587</td><td class="mono">≈ 2.592</td><td class="mono">2.848</td><td class="mono up">91,02%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--google-brand);"></span>Google Brand</td><td class="mono">993</td><td class="mono">≈ 1.595</td><td class="mono">1.732</td><td class="mono up">92,10%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--meta);"></span>Meta</td><td class="mono">233</td><td class="mono">≈ 373</td><td class="mono">749</td><td class="mono down">49,83%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--bing);"></span>Bing</td><td class="mono">184</td><td class="mono">≈ 308</td><td class="mono">369</td><td class="mono up">83,33%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--green-light);"></span>Afiliados</td><td class="mono">36</td><td class="mono">≈ 55</td><td class="mono">396</td><td class="mono down">13,89%</td></tr>
+          <tr><td class="name-cell"><span class="swatch" style="background:var(--border-strong);"></span>Outros</td><td class="mono">0</td><td class="mono">≈ 0</td><td class="mono">951</td><td class="mono down">0,00%</td></tr>
+          <tr><td><b>Total</b></td><td class="mono"><b>5.005</b></td><td class="mono"><b>≈ 8.105</b></td><td class="mono"><b>10.000</b></td><td class="mono up"><b>81,05%</b></td></tr>
         </tbody>
       </table>
     </div>
@@ -419,7 +438,7 @@
     Comparações usam a média das últimas 4 ocorrências do mesmo dia da semana (em vez de dia anterior/semana anterior), pra suavizar oscilações pontuais.<br>
     Nomes de campanha "Pmax" e "DSA" foram mesclados com suas variantes de UTM (<span class="mono">google_nonbrand_vendas_pmax</span> / <span class="mono">google_nonbrand_vendas_search_dsa</span>) para refletir o gasto real. Google é dividido em Brand Search (campanha institucional de marca) e Non-brand (todo o restante).<br>
     Na seção "Melhores campanhas", Cadastros e CAC são cadastros reais (Metabase) por campanha — mesma métrica usada no resto do relatório. Quando o nome do UTM diverge do nome da campanha de mídia (ex: "JusFinder"), o cruzamento é feito por palavra-chave, igual à mesclagem Pmax/DSA.<br>
-    Na "Previsão até o fim do mês": os números (incluindo a quebra "Previsão por canal") são todos cadastros reais (Metabase), mesma métrica do resto do relatório e mesma metodologia (média das últimas 4 ocorrências do dia da semana) aplicada canal a canal — o segundo card mostra só a fatia que falta projetar pros dias restantes. São projeções, não valores realizados.<br>
+    Na "Previsão até o fim do mês": Realizado e Previsto (mês) são cadastros reais (Metabase), mesma métrica do resto do relatório — Previsto usa a mesma metodologia de média das últimas 4 ocorrências do dia da semana, aplicada canal a canal, somada ao realizado. "Meta do mês" vem do plano de metas Q3 2026 (não do Metabase) e muda mês a mês — a de agosto é 10.000 cadastros, quebrados por canal (canal "Outros" agrupa fontes novas do plano ainda não lançadas/rastreadas: TikTok, México, Academy, Eventos, Jurisprudência, Mala Direta, Webinars, IA do Cândia). % de alcance é comparado ao % do mês já decorrido, não a 100%, pra não marcar tudo como "atrasado" no meio do mês.<br>
     "Números do mês" traz dois comparativos: MoM (mês corrente vs mesmo período do mês anterior, cru) e "vs ajustado" (mesmo intervalo, mas usando a média histórica por dia útil/fim de semana/feriado de cada data — isola o efeito de o mês ter mais ou menos dias úteis/fins de semana que o outro). Feriados nacionais e de SP entram como dia não-útil nesse cálculo e nas médias de 4 semanas/previsão do mês.
   </footer>
 
